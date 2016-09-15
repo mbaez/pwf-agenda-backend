@@ -10,7 +10,7 @@ class App:
     config ={
         "app.host":'0.0.0.0',
         "app.port":'9090',
-        "db.host": "localhost",
+        "db.host": "postgres",
         "db.port": "5432",
         "db.user": "postgres",
         "db.password": "postgres",

@@ -5,6 +5,6 @@ import os, sys
 #sys.path.append(os.chdir(os.path.dirname(__file__)))
 sys.path.append(os.path.dirname(__file__))
 import bottle
-from service import *
+from ws import *
 
 application = bottle.default_app()

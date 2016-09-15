@@ -11,7 +11,7 @@ COPY ./src /var/www/ws-server/
 ADD resources/ws.conf /etc/apache2/conf-enabled/ws.conf
 RUN chmod 777 /etc/apache2/conf-enabled/ws.conf
 
-RUN apt-get install -y vim
+#RUN apt-get install -y vim
 RUN   chown -R www-data:www-data /var/www/ws-server
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
