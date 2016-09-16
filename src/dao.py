@@ -152,7 +152,7 @@ class AgendaDao(BaseDao):
                email                AS email, 
                direccion            AS direccion, 
                fecha_creacion       AS fechaCreacion, 
-               fecha_modificacion   AS fechaCreacion
+               fecha_modificacion   AS fechaModificacion 
         FROM   PUBLIC.agenda 
         WHERE  nombre                    LIKE  %(filtro)s OR 
                apellido                  LIKE  %(filtro)s OR 
@@ -204,7 +204,7 @@ class AgendaDao(BaseDao):
                email                AS email, 
                direccion            AS direccion, 
                fecha_creacion       AS fechaCreacion, 
-               fecha_modificacion   AS fechaCreacion
+               fecha_modificacion   AS fechaModificacion 
         FROM   PUBLIC.agenda 
         WHERE id= %(id)s
         """
@@ -239,7 +239,6 @@ class AgendaDao(BaseDao):
         )
         RETURNING id
         """
-
         cursor = self.query(sql_string, args)
         return self.to_dict(cursor)
 
@@ -261,14 +260,14 @@ class AgendaDao(BaseDao):
                alias=                %(alias)s, 
                telefono=             %(telefono)s, 
                email=                %(email)s, 
-               direccion=            %(direccions)s, 
+               direccion=            %(direccion)s, 
                fecha_modificacion=   now()
         WHERE id= %(id)s
         """
         cursor = self.query(sql_string, args)
         return cursor
 
-    def delete(self, args={}):
+    def delete(self, id):
         """
         Se encarga de borrar un author
 
@@ -282,5 +281,6 @@ class AgendaDao(BaseDao):
         sql_string = """
         DELETE FROM agenda WHERE id= %(id)s
         """
+        args = {"id" : id}
         cursor = self.query(sql_string, args)
         return cursor

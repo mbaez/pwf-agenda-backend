@@ -26,7 +26,8 @@ class AgendaController (object):
         Encargada de crear un nuevo recurso, realizando un insert en la
         BD con los datos.
         """
-        self.dao.insert(args);
+        result = self.dao.insert(args);
+        return self.obtener(result.get("id"));
 
     def listar(self, query):
         """
@@ -58,4 +59,5 @@ class AgendaController (object):
         """
         Actualiza los datos de un recurso
         """
-        return self.dao.update(args);
+        self.dao.update(args);
+        return self.obtener(args.get("id"));

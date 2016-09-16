@@ -7,6 +7,8 @@ Define la capa de servicios de la aplicación
 @contact maximiliano.baez@konecta.com.py
 """
 from bottle import Bottle, run
+from app_config import *
+App.config["db.host"] = 'localhost'
 from ws import *
 
 if __name__ =="__main__" :
