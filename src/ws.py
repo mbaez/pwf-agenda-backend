@@ -91,7 +91,7 @@ def actualizar(id):
     except Exception :
         return abort(500);
 
-@route('/agenda/<id>', method='DELETE')
+@route('/agenda/<id>', method=['OPTIONS','DELETE'])
 @cross_domains
 def eliminar(id):
     #try:
