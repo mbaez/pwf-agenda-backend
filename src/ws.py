@@ -45,6 +45,11 @@ def cross_domains(fn):
 
     return _enable_cors
 
+@route('/agenda/<id>', method=['POST'])
+@cross_domains
+def test(id:
+    return {};
+
 @route('/agenda', method='GET')
 @cross_domains
 def listar():
@@ -68,7 +73,7 @@ def obtener(id):
     return json_dumps(data)
 
 
-@route('/agenda', method=['OPTIONS','POST'])
+@route('/agenda', method=['OPTIONS'])
 @cross_domains
 def crear():
     #try:
@@ -79,7 +84,7 @@ def crear():
     #except Exception :
     #    return abort(500);
 
-@route('/agenda/<id>', method=['OPTIONS','PUT'])
+@route('/agenda/<id>', method=['PUT'])
 @cross_domains
 def actualizar(id):
     try:
@@ -91,7 +96,7 @@ def actualizar(id):
     except Exception :
         return abort(500);
 
-@route('/agenda/<id>', method=['OPTIONS','DELETE'])
+@route('/agenda/<id>', method=['DELETE'])
 @cross_domains
 def eliminar(id):
     #try:
