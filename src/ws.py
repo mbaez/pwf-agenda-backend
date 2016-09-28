@@ -46,6 +46,9 @@ def cross_domains(fn):
     return _enable_cors
 
 
+@route('/<:re:.*>', method='OPTIONS')
+def enableCORSGenericRoute():
+    print 'Generic regex route'
 
 @route('/agenda', method='POST')
 @cross_domains
