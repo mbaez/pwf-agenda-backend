@@ -45,22 +45,6 @@ def cross_domains(fn):
 
     return _enable_cors
 
-
-@route('/<:re:.*>', method='OPTIONS')
-def enableCORSGenericRoute():
-    print 'Generic regex route'
-
-@route('/agenda', method='POST')
-@cross_domains
-def crear():
-    #try:
-        data = json.load(request.body)
-        response.content_type="application/json"
-        result = ctrl.crear(data);
-        return json_dumps(result)
-    #except Exception :
-    #    return abort(500);
-    
 @route('/agenda', method='GET')
 @cross_domains
 def listar():
@@ -84,7 +68,18 @@ def obtener(id):
     return json_dumps(data)
 
 
-@route('/agenda/<id>', method='PUT')
+@route('/agenda', method=['OPTIONS','POST'])
+@cross_domains
+def crear():
+    #try:
+        data = json.load(request.body)
+        response.content_type="application/json"
+        result = ctrl.crear(data);
+        return json_dumps(result)
+    #except Exception :
+    #    return abort(500);
+
+@route('/agenda/<id>', method=['OPTIONS','PUT'])
 @cross_domains
 def actualizar(id):
     try:
